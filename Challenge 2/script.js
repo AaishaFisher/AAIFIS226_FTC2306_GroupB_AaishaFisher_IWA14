@@ -1,16 +1,13 @@
-const add = function (a, b)  {
-    return a + b;
-};
+const add =  (a, b)  => a + b;
 
-const multiply = function (a, b) { 
-    return a * b;
- };
+const multiply = (a, b) => a * b;
 
-const internal = function() {
-	const added = this.add(this.internal.a, this.internal.b);
-	const multiplied = this.multiply(this.internal.a, this.internal.b)
-    
-	return this;
+
+const internal = function () {
+
+	const added = add(this.internal.a, this.internal.b);
+	const multiplied = multiply(this.internal.a, this.internal.b)
+    return [added, multiplied];
 }
 
 // Not allowed to change below this
@@ -21,7 +18,7 @@ const example1 = {
 		b: 4,
 		c: 8,
 	},
-	add,
+	add, 
 	multiply,
   calculate: internal
 }
@@ -37,5 +34,5 @@ const example2 = {
   calculate: internal
 }
 
-example1.calculate()
-example2.calculate()
+console.log(example1.calculate()[0]);
+console.log(example2.calculate()[0]); 
